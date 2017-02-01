@@ -3,6 +3,6 @@ Work in progress clone of "Kohctpyktop - Engineer of the People", a flash-based 
 
 ![Alt Text](images/17-01-31.gif)
 
-See goals and current progress [here](ToDo.mdown).
+See goals and current progress [here](ToDo.md).
 
 Download the latest .jar [here](Releases.md).
