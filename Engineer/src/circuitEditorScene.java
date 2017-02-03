@@ -29,28 +29,33 @@ public class circuitEditorScene extends Scene{
 		stable_state = true;
 		simstate[1] = new boolean[(int)dim.x][(int)dim.y];
 		for(int i=0; i<(int)dim.x; i++){
-			for(int j=0; j<(int)dim.y-1; j++){
+			for(int j=0; j<(int)dim.y; j++){
 				if(simstate[0][i][j] && circ.metal_layer[i][j]){
 					simstate[1][i][j]=true;
 					
+					//propagate right
 					if(simstate[0][i][j] && circ.metal_H[i][j]){
 						simstate[1][(i+1)%(int)dim.x][j]=true;
 						
 						if(!simstate[0][(i+1)%(int)dim.x][j])
 							stable_state=false;
 					}
+					
+					//propagate left
 					if(simstate[0][i][j] && circ.metal_H[(i+(int)dim.x-1)%(int)dim.x][j]){
 						simstate[1][(i-1)%(int)dim.x][j]=true;
 						
 						if(!simstate[0][(i-1)%(int)dim.x][j])
 							stable_state=false;
 					}
+					//propagate down
 					if(simstate[0][i][j] && circ.metal_V[i][j]){
 						simstate[1][i][(j+1)%(int)dim.y]=true;
 					
 						if(!simstate[0][i][(j+1)%(int)dim.y])
 							stable_state=false;
 					}
+					//propagate up
 					if(simstate[0][i][j] && circ.metal_V[i][((int)dim.y+j-1)%(int)dim.y]){
 						simstate[1][i][(j-1)%(int)dim.y]=true;
 						
