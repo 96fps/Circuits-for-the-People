@@ -22,7 +22,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
 	static public boolean running=true;
 	
 	static public boolean controls;
-	int wait=1000/25;
+	int wait=1000/60;
 	double itter=(double)wait/1000;
 	Timer clock= new Timer(wait, this);
 	double time=0;

@@ -9,6 +9,8 @@ public class circuitEditorScene extends Scene{
 	
 	boolean[][][] simstate;
 	boolean stable_state;
+
+	pos3d[][] colors;
 	
 	double timelast=0;
 	int t_clone=0;
@@ -19,6 +21,8 @@ public class circuitEditorScene extends Scene{
 		simstate[1][2][3]=true;
 		stable_state=false;
 		circ.stdTemplate();
+		colors = new pos3d[(int)dim.x][(int)dim.y];
+		colors[2][3] = new pos3d(Math.random(),Math.random(),Math.random());
 	}
 	public void dologicTick(Controlset c, double itter){
 		//do logic
@@ -38,7 +42,9 @@ public class circuitEditorScene extends Scene{
 						simstate[1][(i+1)%(int)dim.x][j]=true;
 						
 						if(!simstate[0][(i+1)%(int)dim.x][j])
-							stable_state=false;
+						{	stable_state=false;
+							colors[(i+1)%(int)dim.x][j]=pos3d.add(pos3d.mult(colors[i][j],0.9), pos3d.mult(new pos3d(Math.random(),Math.random(),Math.random()),0.1));
+						}
 					}
 					
 					//propagate left
@@ -46,21 +52,27 @@ public class circuitEditorScene extends Scene{
 						simstate[1][(i-1)%(int)dim.x][j]=true;
 						
 						if(!simstate[0][(i-1)%(int)dim.x][j])
-							stable_state=false;
+						{	stable_state=false;
+							colors[(i-1)%(int)dim.x][j]=pos3d.add(pos3d.mult(colors[i][j],0.9), pos3d.mult(new pos3d(Math.random(),Math.random(),Math.random()),0.1));
+						}
 					}
 					//propagate down
 					if(simstate[0][i][j] && circ.metal_V[i][j]){
 						simstate[1][i][(j+1)%(int)dim.y]=true;
 					
 						if(!simstate[0][i][(j+1)%(int)dim.y])
-							stable_state=false;
+						{	stable_state=false;
+							colors[i][(j+1)%(int)dim.y]=pos3d.add(pos3d.mult(colors[i][j],0.9), pos3d.mult(new pos3d(Math.random(),Math.random(),Math.random()),0.1));
+						}
 					}
 					//propagate up
 					if(simstate[0][i][j] && circ.metal_V[i][((int)dim.y+j-1)%(int)dim.y]){
 						simstate[1][i][(j-1)%(int)dim.y]=true;
 						
 						if(!simstate[0][i][(j-1)%(int)dim.y])
-							stable_state=false;
+						{	stable_state=false;
+							colors[i][(j-1)%(int)dim.y]=pos3d.add(pos3d.mult(colors[i][j],0.9), pos3d.mult(new pos3d(Math.random(),Math.random(),Math.random()),0.1));
+						}
 					}
 				}
 			
@@ -101,6 +113,7 @@ public class circuitEditorScene extends Scene{
 		 for(int j=0; j<(int)dim.y; j++){
 			 if(simstate[0][i][j])
 			 {	 g.setColor(new Color(0,0,0,32));
+			 	g.setColor(pos3d.toColor(colors[i][j]));
 			 	g.fillRect( i*t  +t/2 + 1, j*t+t/2  +1, t-1,t-1);
 			}	
 			else  if(simstate[1][i][j])
