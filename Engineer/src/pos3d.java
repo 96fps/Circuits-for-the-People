@@ -44,7 +44,16 @@ public class pos3d {
 		return new pos3d(a.x*pos.x,
 				 a.y*pos.y,
 				 a.z*pos.z);
-	}public static pos3d mult(pos3d a,double n){
+	}
+	public static pos3d midpoint(pos3d a, pos3d b){
+		if(a != null && b != null){
+		return new pos3d(a.x*0.5 + b.x*0.5,
+				         a.y*0.5 + b.y*0.5,
+				         a.z*0.5 + b.z*0.5);}
+		else
+			return new pos3d(0,0,0);
+	}
+	public static pos3d mult(pos3d a,double n){
 		return new pos3d(a.x*n,
 		 		 a.y*n,
 		 		 a.z*n);
@@ -53,7 +62,10 @@ public class pos3d {
 		return new pos3d(-pos.x, -pos.y, -pos.z);
 	}
 	public static Color toColor(pos3d in){
-		Color newcolor = new Color((int)(255*in.x+256)%256,(int)(255*in.y+256)%256,(int)(255*in.z+256)%256);
+		Color newcolor = 
+				new Color((int)(255*in.x+256)%256,
+					      (int)(255*in.y+256)%256,
+					      (int)(255*in.z+256)%256);
 		return newcolor;
 	}
 	
