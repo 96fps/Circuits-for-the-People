@@ -20,7 +20,7 @@ public class siliconGrid {
 		
 		
 		for(int i=0; i<(int)dim.x; i++){
-			for(int j=0; j<(int)dim.y; j++){
+			for(int j=(int)dim.y/2; j<(int)dim.y; j++){
 				if(Math.random()>0.6) layer[i][j]=siliconType.red;
 				else if(Math.random()>0.5) layer[i][j]=siliconType.yellow;
 			
@@ -38,10 +38,15 @@ public class siliconGrid {
 					{	if(Math.random()>0.2)
 							verti[i][j]=siliconType.red;
 					}
-					else{
-							if(Math.random()>0.5)
-							verti[i][j]=siliconType.red;
-					}
+//					else{
+//							if(Math.random()>0.9)
+//							{
+//								if(Math.random()>.5)
+//									verti[i][j]=siliconType.yellow;
+//								else 
+//									verti[i][j]=siliconType.red;
+//							}
+//					}
 				}
 			}
 		}
@@ -57,10 +62,14 @@ public class siliconGrid {
 						if(Math.random()>0.2)
 							horiz[i][j]=siliconType.red;
 					}
-					else{
-						if(Math.random()>0.5)
-						horiz[i][j]=siliconType.red;
-					}
+//					else{
+//						if(Math.random()>0.9){
+//							if(Math.random()>.5)
+//								horiz[i][j]=siliconType.yellow;
+//							else
+//								horiz[i][j]=siliconType.red;
+//						}
+//					}
 				}
 			}
 		}
