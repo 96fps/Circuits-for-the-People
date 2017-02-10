@@ -6,13 +6,14 @@ Engineer of the People Clone
 
 - [ ] **Internal model of circuit for editing**
     + [x] metal
-    + [ ] simple silicon
+    + [x] simple silicon
     + [ ] vias
     + [ ] transitors
 - [ ] **Rendering circuits**
     - [x] metal
-    - [ ] power
-    - [ ] silicon
+    	- [x] power
+    - [x] silicon
+    - [ ] transistor
     - [ ] via
 - [ ] **circuit editing**
     - [x] programatically 
