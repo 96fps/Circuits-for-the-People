@@ -1,0 +1,72 @@
+
+╔══════════════════════════════════════╗
+║ Circuits for the People              ║
+║ =======================              ║
+║ An "Engineer of the People"-clone.   ║
+╚══════════════════════════════════════╝
+ ┏━━━━━━━━━━━━━━━━━━━━━━━━━┓
+ ┃ High-Level Components   ┃
+ ┗━━━━━━━━━━━━━━━━━━━━━━━━━┛
+	---
+	 Circuit_Model
+	 ===
+		Stored Structures
+		 {
+			Metal Layer
+				metal
+			Silicon Layer
+				silicon
+				transistors (with non-static state)
+			Vias
+		 }
+
+		Rules for valid structures
+		  {
+			clean() function(s) that sanitize invalid stored structures.
+		  }
+		
+		Simulation
+		 {
+			Do sim Tick()
+			 {
+				propagate power respecting transistors states
+
+				update transistors states based on new power propagation
+			 }
+		 }
+
+
+	---
+	 Circuit_Sim
+	 ===
+		tick()
+			- propagate across metal, vias, and open silicon paths.
+			- update transistors' blocking/open states
+
+
+	---
+	 Circuit_Draw
+	 ===
+		draw silicon layer
+			draw silicon
+			draw transistors
+
+		draw metal layer
+			draw metal
+			draw vias
+
+		<draw power propogation>
+
+
+	---
+	 Lattice_grid
+	 ===
+ 		- store multi-material structures
+ 		- draw multi-material structures
+ 		- test for connections
+
+
+ 	---
+ 	 abstract circuit
+ 	 ===
+ 		- the connections between inputs, transistors, and outputs are cached so simulations don't have to simulate ever tile on a wire every time a tick occurs.
