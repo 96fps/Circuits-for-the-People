@@ -22,7 +22,7 @@ Engineer of the People Clone
 - [ ] **reversed engineer & parsing saved circuits**
 	+ [ ] /export valid code
 - [ ] **Simulation**
-	+ [ ]silly simulation
+	+ [ ] silly simulation
 	   + [x] flood fill
 	   + [ ] accurate for single transitor layer designs
 	+ [ ] tick accurate simulation
