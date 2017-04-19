@@ -19,18 +19,18 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
 	double itter=(double)wait/1000;
 	Timer clock= new Timer(wait, this);
 	double time=0;
-	Controlset c= new Controlset();
+	ControlSet c= new ControlSet();
 	int sceneID=0;
 	
 	int tile_size=16;
 
-	pos2d board_dim=new pos2d(44,27);
+	Pos2D board_dim=new Pos2D(44,27);
 	
-	pos2d gameRes=new pos2d((board_dim.x+1)*tile_size,(board_dim.y+1)*tile_size);
+	Pos2D gameRes=new Pos2D((board_dim.x+1)*tile_size,(board_dim.y+1)*tile_size);
 	
 	IntroScene intro= new IntroScene();
-	menuScene menu= new menuScene();
-	circuitEditorScene editor= new circuitEditorScene(board_dim);
+	MenuScene menu= new MenuScene();
+	CircuitEditorScene editor= new CircuitEditorScene(board_dim);
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {//new game "tick"

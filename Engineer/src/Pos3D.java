@@ -1,16 +1,16 @@
 import java.awt.Color;
 
-public class pos3d {
+public class Pos3D {
 	public double x;
 	public double y;
 	public double z;
 	
-	public pos3d(){
+	public Pos3D(){
 		x=0;
 		y=0;
 		z=0;
 	}
-	public pos3d(double posX, double posY, double posZ){
+	public Pos3D(double posX, double posY, double posZ){
 		x=posX;
 		y=posY;
 		z=posZ;
@@ -20,48 +20,48 @@ public class pos3d {
 		y+=posY;
 		z+=posZ;
 	}
-	public void add(pos3d pos){
+	public void add(Pos3D pos){
 		x+=pos.x;
 		y+=pos.y;
 		z+=pos.z;
-	}public static pos3d add(pos3d a, pos3d b){
-		pos3d c= new pos3d();
+	}public static Pos3D add(Pos3D a, Pos3D b){
+		Pos3D c= new Pos3D();
 		c.x=a.x+b.x;
 		c.y=a.y+b.y;
 		c.z=a.z+b.z;
 		return c;
 	}
-	public pos3d mult(pos3d pos){
-		return new pos3d(x*pos.x,
+	public Pos3D mult(Pos3D pos){
+		return new Pos3D(x*pos.x,
 						 y*pos.y,
 						 z*pos.z);
-	}public pos3d mult(double n){
-		return new pos3d(x*n,
+	}public Pos3D mult(double n){
+		return new Pos3D(x*n,
 				 		 y*n,
 				 		 z*n);
 	}
-	public static pos3d mult(pos3d a, pos3d pos){
-		return new pos3d(a.x*pos.x,
+	public static Pos3D mult(Pos3D a, Pos3D pos){
+		return new Pos3D(a.x*pos.x,
 				 a.y*pos.y,
 				 a.z*pos.z);
 	}
-	public static pos3d midpoint(pos3d a, pos3d b){
+	public static Pos3D midpoint(Pos3D a, Pos3D b){
 		if(a != null && b != null){
-		return new pos3d(a.x*0.5 + b.x*0.5,
+		return new Pos3D(a.x*0.5 + b.x*0.5,
 				         a.y*0.5 + b.y*0.5,
 				         a.z*0.5 + b.z*0.5);}
 		else
-			return new pos3d(0,0,0);
+			return new Pos3D(0,0,0);
 	}
-	public static pos3d mult(pos3d a,double n){
-		return new pos3d(a.x*n,
+	public static Pos3D mult(Pos3D a, double n){
+		return new Pos3D(a.x*n,
 		 		 a.y*n,
 		 		 a.z*n);
 }
-	public static pos3d negate(pos3d pos){
-		return new pos3d(-pos.x, -pos.y, -pos.z);
+	public static Pos3D negate(Pos3D pos){
+		return new Pos3D(-pos.x, -pos.y, -pos.z);
 	}
-	public static Color toColor(pos3d in){
+	public static Color toColor(Pos3D in){
 		Color newcolor = 
 				new Color((int)(255*in.x+256)%256,
 					      (int)(255*in.y+256)%256,

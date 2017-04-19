@@ -1,16 +1,16 @@
 
-public class metalGrid {
+public class MetalGrid {
 
-	pos2d board_dim; //44 x 27
+	Pos2D board_dim; //44 x 27
 
 	public boolean[][] layer;  
 	public boolean[][] horiz;  
 	public boolean[][] verti;  
 	
-	public metalGrid(){
-		board_dim = new pos2d(44,27);
+	public MetalGrid(){
+		board_dim = new Pos2D(44,27);
 	}
-	public metalGrid(pos2d dim){
+	public MetalGrid(Pos2D dim){
 		board_dim = dim;
 		layer = new boolean[(int)dim.x  ][(int)dim.y  ];
 		horiz =     new boolean[(int)dim.x  ][(int)dim.y  ];

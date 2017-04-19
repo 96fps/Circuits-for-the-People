@@ -1,11 +1,11 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class circuitEditorScene extends Scene{
+public class CircuitEditorScene extends Scene{
     double timestep=0;
-    pos2d dim;
-    metalGrid circ;
-    siliconGrid silly;
+    Pos2D dim;
+    MetalGrid circ;
+    SiliconGrid silly;
     
     boolean[][][] metalpower;
     boolean[][][] sillypower;
@@ -13,24 +13,24 @@ public class circuitEditorScene extends Scene{
     
     boolean colorMetal=true;
 
-    pos3d[][] colors;
+    Pos3D[][] colors;
     
     double timelast=0;
     int t_clone=0;
-    public circuitEditorScene(pos2d board_dim){
+    public CircuitEditorScene(Pos2D board_dim){
         dim = board_dim;
-        circ= new metalGrid(dim);
-        silly= new siliconGrid(dim);
+        circ= new MetalGrid(dim);
+        silly= new SiliconGrid(dim);
         metalpower = new boolean[2][(int)dim.x][(int)dim.y];
         sillypower = new boolean[2][(int)dim.x][(int)dim.y];
         metalpower[1][2][3]=true;
         stable_state=false;
         circ.stdTemplate();
         silly.stdTemplate();
-        colors = new pos3d[(int)dim.x][(int)dim.y];
-        colors[2][3] = new pos3d(Math.random(),Math.random(),Math.random());
+        colors = new Pos3D[(int)dim.x][(int)dim.y];
+        colors[2][3] = new Pos3D(Math.random(),Math.random(),Math.random());
     }
-    public void dologicTick(Controlset c, double itter){
+    public void dologicTick(ControlSet c, double itter){
 
         //does internal logic once a frame
         
@@ -43,15 +43,15 @@ public class circuitEditorScene extends Scene{
         }
         
         if(stable_state && (true && timestep>timelast+1)){
-            circ= new metalGrid(dim);
+            circ= new MetalGrid(dim);
             timelast = timestep;
             metalpower = new boolean[2][(int)dim.x][(int)dim.y];
             metalpower[1][2][3]=true;
             circ.stdTemplate();
-            silly= new siliconGrid(dim);
+            silly= new SiliconGrid(dim);
             silly.stdTemplate();
-            colors = new pos3d[(int)dim.x][(int)dim.y];
-            colors[2][3] = new pos3d(Math.random(),Math.random(),Math.random());
+            colors = new Pos3D[(int)dim.x][(int)dim.y];
+            colors[2][3] = new Pos3D(Math.random(),Math.random(),Math.random());
         }
     }
     
@@ -73,8 +73,8 @@ public class circuitEditorScene extends Scene{
                         if(!metalpower[0][(i+1)%(int)dim.x][j])
                         {   stable_state=false;
                             colors[(i+1)%(int)dim.x][j] =
-                              pos3d.add(pos3d.mult(colors[i][j],0.9),
-                                       pos3d.mult(new pos3d(Math.random(),
+                              Pos3D.add(Pos3D.mult(colors[i][j],0.9),
+                                       Pos3D.mult(new Pos3D(Math.random(),
                                                            Math.random(),
                                                           Math.random() ),0.1));
                         }
@@ -89,8 +89,8 @@ public class circuitEditorScene extends Scene{
                         if(!metalpower[0][(i-1)%(int)dim.x][j])
                         {   stable_state=false;
                             colors[(i-1)%(int)dim.x][j] = 
-                              pos3d.add(pos3d.mult(colors[i][j],0.9),
-                                       pos3d.mult(new pos3d(Math.random(),
+                              Pos3D.add(Pos3D.mult(colors[i][j],0.9),
+                                       Pos3D.mult(new Pos3D(Math.random(),
                                                            Math.random(),
                                                           Math.random() ),0.1));
                         }
@@ -104,8 +104,8 @@ public class circuitEditorScene extends Scene{
                         if(!metalpower[0][i][(j+1)%(int)dim.y])
                         {   stable_state=false;
                             colors[i][(j+1)%(int)dim.y] = 
-                              pos3d.add(pos3d.mult(colors[i][j],0.9), 
-                                       pos3d.mult(new pos3d(Math.random(),
+                              Pos3D.add(Pos3D.mult(colors[i][j],0.9),
+                                       Pos3D.mult(new Pos3D(Math.random(),
                                                            Math.random(),
                                                           Math.random()),0.1));
                         }
@@ -119,8 +119,8 @@ public class circuitEditorScene extends Scene{
                         if(!metalpower[0][i][(j-1)%(int)dim.y])
                         {   stable_state=false;
                             colors[i][(j-1)%(int)dim.y] = 
-                              pos3d.add(pos3d.mult(colors[i][j],0.9), 
-                                       pos3d.mult(new pos3d(Math.random(),
+                              Pos3D.add(Pos3D.mult(colors[i][j],0.9),
+                                       Pos3D.mult(new Pos3D(Math.random(),
                                                            Math.random(),
                                                           Math.random()),0.1));
                         }
@@ -130,11 +130,11 @@ public class circuitEditorScene extends Scene{
         }
     }
     
-    public void render(Graphics g, pos2d gameRes){
+    public void render(Graphics g, Pos2D gameRes){
         this.render(g, gameRes,10);
         // the last parameter decides pixel size of a grid tile
     }
-    public void render(Graphics g, pos2d gameRes,int t){
+    public void render(Graphics g, Pos2D gameRes, int t){
 
         g.setColor(new Color(128,128,128));
         g.fillRect(0, 0, (int)gameRes.x, (int)gameRes.y);
@@ -144,7 +144,7 @@ public class circuitEditorScene extends Scene{
         drawSilicon(g, gameRes, t, silly);
         
     }
-    public void drawGrid(Graphics g, pos2d gameRes,int t){
+    public void drawGrid(Graphics g, Pos2D gameRes, int t){
         g.setColor(new Color(255,255,255,64));
         g.fillRect(4*t+t/2,
                        t/2, 
@@ -162,22 +162,22 @@ public class circuitEditorScene extends Scene{
         }   
     }
     
-    public void drawMetal(Graphics g, pos2d gameRes,int t, metalGrid circ){
+    public void drawMetal(Graphics g, Pos2D gameRes, int t, MetalGrid circ){
         g.setColor(new Color(0,0,0,127));
         for(int i=0; i<(int)dim.x; i++){
             for(int j=0; j<(int)dim.y; j++){
                 
                 if(circ.layer[i][j]){
                     if(metalpower[1][i][j] && colorMetal)
-                         g.setColor(pos3d.toColor(colors[i][j]).brighter());
+                         g.setColor(Pos3D.toColor(colors[i][j]).brighter());
                     else g.setColor(new Color(0,0,0,96));
                 
                     g.fillRect( i*t  +t/2 + 2, j*t+t/2  +2, t-3,t-3);
                 }
                 if(circ.horiz[i][j]){
                     if(metalpower[1][i][j] && metalpower[1][i+1][j] && colorMetal)
-                         g.setColor( pos3d.toColor(
-                                     pos3d.midpoint(colors[i][j],
+                         g.setColor( Pos3D.toColor(
+                                     Pos3D.midpoint(colors[i][j],
                                                     colors[i+1][j])).brighter());
                     else g.setColor(new Color(0,0,0,96));
                     
@@ -185,8 +185,8 @@ public class circuitEditorScene extends Scene{
                 }
                 if(circ.verti[i][j]){
                     if(metalpower[1][i][j] && metalpower[1][i][j+1] && colorMetal)
-                         g.setColor( pos3d.toColor(
-                                     pos3d.midpoint(colors[i][j],
+                         g.setColor( Pos3D.toColor(
+                                     Pos3D.midpoint(colors[i][j],
                                                     colors[i][j+1])).brighter());
                     else g.setColor(new Color(0,0,0,96));
                     
@@ -200,15 +200,15 @@ public class circuitEditorScene extends Scene{
             for(int j=0; j<(int)dim.y; j++){
                 if(circ.layer[i][j]){
                     if(metalpower[1][i][j] && colorMetal)
-                         g.setColor(pos3d.toColor(colors[i][j]));
+                         g.setColor(Pos3D.toColor(colors[i][j]));
                     else g.setColor(new Color(255,255,255,128));
                     
                     g.fillRect( i*t  +t/2 + 3, j*t+t/2  +3, t-5,t-5);
                 }
                 if(circ.horiz[i][j]){
                     if(metalpower[1][i][j] && metalpower[1][i+1][j] && colorMetal)
-                         g.setColor( pos3d.toColor( 
-                                     pos3d.midpoint(colors[i][j],
+                         g.setColor( Pos3D.toColor(
+                                     Pos3D.midpoint(colors[i][j],
                                                     colors[i+1][j])));
                     else g.setColor(new Color(255,255,255,128));
                     
@@ -216,8 +216,8 @@ public class circuitEditorScene extends Scene{
                 }
                 if(circ.verti[i][j]){
                     if(metalpower[1][i][j] && metalpower[1][i][j+1] && colorMetal)
-                         g.setColor( pos3d.toColor(
-                                     pos3d.midpoint(colors[i][j],
+                         g.setColor( Pos3D.toColor(
+                                     Pos3D.midpoint(colors[i][j],
                                                     colors[i][j+1])));
                     else g.setColor(new Color(255,255,255,128));
                     
@@ -232,31 +232,31 @@ public class circuitEditorScene extends Scene{
           for(int j=0; j<(int)dim.y; j++){
             if( !metalpower[0][i][j] && metalpower[1][i][j])
             {   
-                g.setColor(pos3d.toColor(pos3d.midpoint(colors[i][j],new pos3d(0,0,0))));
+                g.setColor(Pos3D.toColor(Pos3D.midpoint(colors[i][j],new Pos3D(0,0,0))));
                 g.fillRect( i*t  +t/2 +1, j*t+t/2 +1, t-1,t-1);
             }   
         }
     }
-    public void drawSilicon(Graphics g, pos2d gameRes,int t, siliconGrid silicon){
+    public void drawSilicon(Graphics g, Pos2D gameRes, int t, SiliconGrid silicon){
         g.setColor(new Color(0,0,0,127));
         
         for(int i=0; i<(int)dim.x; i++){
             for(int j=0; j<(int)dim.y; j++){
                 if(silicon.layer[i][j] != null){
-                    if(silicon.layer[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.layer[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red.darker().darker());
                     else g.setColor(Color.yellow.darker().darker());
                     g.fillRect( i*t  +t/2 + 2, j*t+t/2  +2, t-3,t-3);
                 }
                 if(silicon.horiz[i][j]!= null){
-                    if(silicon.horiz[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.horiz[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red.darker().darker());
                     else g.setColor(Color.yellow.darker().darker());
                     
                     g.fillRect( i*t  +t/2 + t-1, j*t+t/2  +2, 3,t-3);
                 }
                 if(silicon.verti[i][j]!= null){
-                    if(silicon.verti[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.verti[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red.darker().darker());
                     else g.setColor(Color.yellow.darker().darker());
                     
@@ -271,7 +271,7 @@ public class circuitEditorScene extends Scene{
                 
                 
                 if(silicon.layer[i][j]!=null){
-                    if(silicon.layer[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.layer[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red);
                     else g.setColor(Color.yellow);
                     
@@ -279,7 +279,7 @@ public class circuitEditorScene extends Scene{
                 }
                 if(silicon.horiz[i][j]!=null)
                 {   
-                    if(silicon.horiz[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.horiz[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red);
                     else g.setColor(Color.yellow);
                     
@@ -287,7 +287,7 @@ public class circuitEditorScene extends Scene{
                 }
                 if(silicon.verti[i][j]!=null)
                 {
-                    if(silicon.verti[i][j] == siliconGrid.siliconType.red)
+                    if(silicon.verti[i][j] == SiliconGrid.siliconType.red)
                          g.setColor(Color.red);
                     else 
                         g.setColor(Color.yellow);

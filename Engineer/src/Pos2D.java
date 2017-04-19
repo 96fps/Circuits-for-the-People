@@ -1,17 +1,17 @@
 
-public class pos2d {
+public class Pos2D {
 	public double x;
 	public double y;
 	
-	public pos2d(){
+	public Pos2D(){
 		x=0;
 		y=0;
 	}
-	public pos2d(double posX, double posY){
+	public Pos2D(double posX, double posY){
 		x=posX;
 		y=posY;
 	}
-	public pos2d(int posX, int posY){
+	public Pos2D(int posX, int posY){
 		x=posX;
 		y=posY;
 	}

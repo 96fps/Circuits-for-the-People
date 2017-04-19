@@ -10,12 +10,12 @@ public class IntroScene extends Scene{
 	public IntroScene(){
 		//build
 	}
-	public void dologicTick(Controlset c, double itter){
+	public void dologicTick(ControlSet c, double itter){
 		//do logic
 		timestep+=itter;
 		if(false) skip=true;
 	}
-	public void render(Graphics g, pos2d gameRes){
+	public void render(Graphics g, Pos2D gameRes){
 		g.setColor(new Color(0,0,0));
 		blitz=Math.pow(0.1,timestep%1);
 		if(timestep<starttime)

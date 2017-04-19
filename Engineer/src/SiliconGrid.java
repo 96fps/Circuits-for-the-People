@@ -1,7 +1,7 @@
 
-public class siliconGrid {
+public class SiliconGrid {
 
-	pos2d board_dim; //44 x 27
+	Pos2D board_dim; //44 x 27
 
 	public enum siliconType { red, yellow }
 	
@@ -9,10 +9,10 @@ public class siliconGrid {
 	public siliconType[][] horiz;  
 	public siliconType[][] verti;  
 	
-	public siliconGrid(){
-		board_dim = new pos2d(44,27);
+	public SiliconGrid(){
+		board_dim = new Pos2D(44,27);
 	}
-	public siliconGrid(pos2d dim){
+	public SiliconGrid(Pos2D dim){
 		board_dim = dim;
 		layer = new siliconType[(int)dim.x  ][(int)dim.y  ];
 		horiz = new siliconType[(int)dim.x  ][(int)dim.y  ];

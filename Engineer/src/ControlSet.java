@@ -1,20 +1,20 @@
 import java.util.ArrayList;
 
 
-public class Controlset {
+public class ControlSet {
 	ArrayList<Boolean> buttons=new ArrayList<Boolean>();
 	ArrayList<Double> doubles=new ArrayList<Double>();
 	ArrayList<Integer> ints=new ArrayList<Integer>();
 	
-	public Controlset(){
+	public ControlSet(){
 	
 	}
-	public Controlset(ArrayList<Boolean> b, ArrayList<Double> d, ArrayList<Integer> i){
+	public ControlSet(ArrayList<Boolean> b, ArrayList<Double> d, ArrayList<Integer> i){
 		buttons=b;
 		doubles=d;
 		ints=i;
 	}
-	public Controlset(ArrayList<Boolean> b){
+	public ControlSet(ArrayList<Boolean> b){
 		buttons=b;
 	}
 }
