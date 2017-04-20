@@ -75,11 +75,9 @@ public class Pos3D {
     }
 
     public static Color toColor(Pos3D in) {
-        Color newcolor =
-                new Color((int) (255 * in.x + 256) % 256,
-                        (int) (255 * in.y + 256) % 256,
-                        (int) (255 * in.z + 256) % 256);
-        return newcolor;
+        return new Color((int) (255 * in.x + 256) % 256,
+                (int) (255 * in.y + 256) % 256,
+                (int) (255 * in.z + 256) % 256);
     }
 
 }
