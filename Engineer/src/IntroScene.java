@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 
-public class IntroScene extends Scene {
+public class IntroScene implements Scene {
     private double timestep = 0;
     private double blitz = 0;
     boolean skip = true;

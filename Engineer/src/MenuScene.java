@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 
-public class MenuScene extends Scene {
+public class MenuScene implements Scene {
     private double timestep = 0;
 
     public MenuScene() {

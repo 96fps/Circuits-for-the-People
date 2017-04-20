@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class CircuitEditorScene extends Scene {
+public class CircuitEditorScene implements Scene {
     private double timestep = 0;
     private Pos2D dim;
     private MetalGrid circ;
