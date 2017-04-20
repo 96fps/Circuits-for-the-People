@@ -8,7 +8,7 @@ public class MetalGrid {
     public boolean[][] verti;
 
     public MetalGrid() {
-        board_dim = new Pos2D(44, 27);
+        this(new Pos2D(44, 27));
     }
 
     public MetalGrid(Pos2D dim) {

@@ -6,9 +6,7 @@ public class Pos3D {
     public double z;
 
     public Pos3D() {
-        x = 0;
-        y = 0;
-        z = 0;
+        this(0.0, 0.0, 0.0);
     }
 
     public Pos3D(double posX, double posY, double posZ) {
