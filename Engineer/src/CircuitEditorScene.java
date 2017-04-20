@@ -34,7 +34,7 @@ public class CircuitEditorScene extends Scene {
         colors[2][3] = new Pos3D(Math.random(), Math.random(), Math.random());
     }
 
-    public void doLogicTick(ControlSet c, double itter) {
+    public void doLogicTick(double itter) {
 
         //does internal logic once a frame
 

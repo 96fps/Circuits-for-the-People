@@ -12,7 +12,7 @@ public class IntroScene extends Scene {
         //build
     }
 
-    public void doLogicTick(ControlSet c, double itter) {
+    public void doLogicTick(double itter) {
         //do logic
         timestep += itter;
     }

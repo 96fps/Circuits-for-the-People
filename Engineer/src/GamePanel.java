@@ -19,7 +19,6 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
     private double itter = (double) wait / 1000;
     private Timer clock = new Timer(wait, this);
     private double time = 0;
-    private ControlSet c = new ControlSet();
     private int sceneID = 0;
 
     private int tile_size = 16;
@@ -37,21 +36,21 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
         time += itter;
 
         if (sceneID == 0) {
-            intro.doLogicTick(c, itter);
+            intro.doLogicTick(itter);
 
             if (time > (double) intro.starttime + 0.5 || intro.skip) {
                 sceneID = 1;
             }
         }
         if (sceneID == 1) {
-            menu.doLogicTick(c, itter);
+            menu.doLogicTick(itter);
 
             if (time > (double) intro.starttime + 2 || intro.skip) {
                 sceneID = 2;
             }
         }
         if (sceneID == 2) {
-            editor.doLogicTick(c, itter);
+            editor.doLogicTick(itter);
         }
         if (running) {
             //scenelogic
