@@ -37,21 +37,21 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
         time += itter;
 
         if (sceneID == 0) {
-            intro.dologicTick(c, itter);
+            intro.doLogicTick(c, itter);
 
             if (time > (double) intro.starttime + 0.5 || intro.skip) {
                 sceneID = 1;
             }
         }
         if (sceneID == 1) {
-            menu.dologicTick(c, itter);
+            menu.doLogicTick(c, itter);
 
             if (time > (double) intro.starttime + 2 || intro.skip) {
                 sceneID = 2;
             }
         }
         if (sceneID == 2) {
-            editor.dologicTick(c, itter);
+            editor.doLogicTick(c, itter);
         }
         if (running) {
             //scenelogic

@@ -9,7 +9,7 @@ public class MenuScene extends Scene {
         //build
     }
 
-    public void dologicTick(ControlSet c, double itter) {
+    public void doLogicTick(ControlSet c, double itter) {
         //do logic
         timestep += itter;
     }
