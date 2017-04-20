@@ -43,7 +43,7 @@ public class CircuitEditorScene extends Scene {
             spread1tile();
         }
 
-        if (stable_state && (true && timestep > timelast + 1)) {
+        if (stable_state && timestep > timelast + 1) {
             circ = new MetalGrid(dim);
             timelast = timestep;
             metalpower = new boolean[2][(int) dim.x][(int) dim.y];

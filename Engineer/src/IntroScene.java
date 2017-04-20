@@ -15,7 +15,6 @@ public class IntroScene extends Scene {
     public void doLogicTick(ControlSet c, double itter) {
         //do logic
         timestep += itter;
-        if (false) skip = true;
     }
 
     public void render(Graphics g, Pos2D gameRes) {
