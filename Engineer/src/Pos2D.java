@@ -1,20 +1,22 @@
 
 public class Pos2D {
-    public double x;
-    public double y;
+    private int x;
+    private int y;
 
     public Pos2D() {
-        x = 0;
-        y = 0;
-    }
-
-    public Pos2D(double posX, double posY) {
-        x = posX;
-        y = posY;
+        this(0, 0);
     }
 
     public Pos2D(int posX, int posY) {
         x = posX;
         y = posY;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

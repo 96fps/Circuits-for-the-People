@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
 
     private Pos2D board_dim = new Pos2D(44, 27);
 
-    private Pos2D gameRes = new Pos2D((board_dim.x + 1) * tile_size, (board_dim.y + 1) * tile_size);
+    private Pos2D gameRes = new Pos2D((board_dim.getX() + 1) * tile_size, (board_dim.getY() + 1) * tile_size);
 
     private IntroScene intro = new IntroScene();
     private MenuScene menu = new MenuScene();
@@ -70,7 +70,7 @@ public class GamePanel extends JPanel implements MouseListener, KeyListener, Act
 
         addMouseListener(this);
 
-        setPreferredSize(new Dimension((int) gameRes.x, (int) gameRes.y));
+        setPreferredSize(new Dimension((int) gameRes.getX(), (int) gameRes.getY()));
 
         repaint();
 

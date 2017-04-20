@@ -15,21 +15,21 @@ public class SiliconGrid {
 
     public SiliconGrid(Pos2D dim) {
         board_dim = dim;
-        layer = new siliconType[(int) dim.x][(int) dim.y];
-        horiz = new siliconType[(int) dim.x][(int) dim.y];
-        verti = new siliconType[(int) dim.x][(int) dim.y];
+        layer = new siliconType[dim.getX()][dim.getY()];
+        horiz = new siliconType[dim.getX()][dim.getY()];
+        verti = new siliconType[dim.getX()][dim.getY()];
 
 
-        for (int i = 0; i < (int) dim.x; i++) {
-            for (int j = (int) dim.y / 2; j < (int) dim.y; j++) {
+        for (int i = 0; i < dim.getX(); i++) {
+            for (int j = dim.getY() / 2; j < dim.getY(); j++) {
                 if (Math.random() > 0.6) layer[i][j] = siliconType.red;
                 else if (Math.random() > 0.5) layer[i][j] = siliconType.yellow;
 
             }
         }
 
-        for (int i = 0; i < (int) dim.x; i++) {
-            for (int j = 0; j < (int) dim.y - 1; j++) {
+        for (int i = 0; i < dim.getX(); i++) {
+            for (int j = 0; j < dim.getY() - 1; j++) {
                 if (layer[i][j] != null && layer[i][j + 1] != null) {
                     if (layer[i][j].equals(siliconType.yellow) && layer[i][j + 1].equals(siliconType.yellow)) {
                         if (Math.random() > 0.2)
@@ -50,8 +50,8 @@ public class SiliconGrid {
                 }
             }
         }
-        for (int i = 0; i < (int) dim.x - 1; i++) {
-            for (int j = 0; j < (int) dim.y; j++) {
+        for (int i = 0; i < dim.getX() - 1; i++) {
+            for (int j = 0; j < dim.getY(); j++) {
                 if (layer[i][j] != null && layer[i + 1][j] != null) {
                     if (layer[i][j].equals(siliconType.yellow) && layer[i + 1][j].equals(siliconType.yellow)) {
                         if (Math.random() > 0.2)
@@ -74,14 +74,14 @@ public class SiliconGrid {
     }
 
     public void clean() {
-        for (int i = 0; i < (int) board_dim.x; i++) {
-            for (int j = 0; j < (int) board_dim.y - 1; j++) {
+        for (int i = 0; i < board_dim.getX(); i++) {
+            for (int j = 0; j < board_dim.getY() - 1; j++) {
                 if (layer[i][j] == null || layer[i][j + 1] == null)
                     verti[i][j] = null;
             }
         }
-        for (int i = 0; i < (int) board_dim.x - 1; i++) {
-            for (int j = 0; j < (int) board_dim.y; j++) {
+        for (int i = 0; i < board_dim.getX() - 1; i++) {
+            for (int j = 0; j < board_dim.getY(); j++) {
                 if (layer[i][j] == null || layer[i + 1][j] == null)
                     horiz[i][j] = null;
             }
@@ -92,12 +92,12 @@ public class SiliconGrid {
 
         //clean edges
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < (int) board_dim.y; j++) {
+            for (int j = 0; j < board_dim.getY(); j++) {
                 layer[i][j] = null;
             }
         }
-        for (int i = (int) board_dim.x - 4; i < (int) board_dim.x; i++) {
-            for (int j = 0; j < (int) board_dim.y; j++) {
+        for (int i = board_dim.getX() - 4; i < board_dim.getX(); i++) {
+            for (int j = 0; j < board_dim.getY(); j++) {
                 layer[i][j] = null;
             }
         }

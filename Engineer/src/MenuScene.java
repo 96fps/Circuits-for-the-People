@@ -17,9 +17,9 @@ public class MenuScene extends Scene {
     public void render(Graphics g, Pos2D gameRes) {
 
         g.setColor(new Color(128, 128, 128));
-        g.fillRect(0, 0, (int) gameRes.x, (int) gameRes.y);
+        g.fillRect(0, 0, (int) gameRes.getX(), (int) gameRes.getY());
         g.setColor(Color.DARK_GRAY);
-        g.fillRect(32, 32, (int) gameRes.x - 64, 32);
+        g.fillRect(32, 32, (int) gameRes.getX() - 64, 32);
         g.setColor(Color.white);
         g.drawString("Circuits for the People", 42, 52);
 

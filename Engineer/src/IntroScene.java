@@ -24,25 +24,25 @@ public class IntroScene extends Scene {
             g.setColor(new Color((int) (32 * blitz), (int) (32 * blitz), (int) (32 * blitz)));
         else g.setColor(new Color(64, 0, 0));
 
-        g.fillRect(0, 0, (int) gameRes.x, (int) gameRes.y);
+        g.fillRect(0, 0, gameRes.getX(), gameRes.getY());
         g.setColor(Color.white);
-        g.drawLine((int) (gameRes.y * (Math.sin(timestep * 2 * Math.PI / 60)) + gameRes.x / 2),
-                (int) (gameRes.y * (-Math.cos(timestep * 2 * Math.PI / 60)) + gameRes.y / 2),
-                (int) (gameRes.x / 2),
-                (int) (gameRes.y / 2)
+        g.drawLine((int) (gameRes.getY() * (Math.sin(timestep * 2 * Math.PI / 60)) + gameRes.getX() / 2),
+                (int) (gameRes.getY() * (-Math.cos(timestep * 2 * Math.PI / 60)) + gameRes.getY() / 2),
+                gameRes.getX() / 2,
+                gameRes.getY() / 2
         );
-        g.drawLine((int) (gameRes.y * (Math.sin(timestep * 2 * Math.PI)) + gameRes.x / 2),
-                (int) (gameRes.y * (-Math.cos(timestep * 2 * Math.PI)) + gameRes.y / 2),
-                (int) (gameRes.x / 2),
-                (int) (gameRes.y / 2)
+        g.drawLine((int) (gameRes.getY() * (Math.sin(timestep * 2 * Math.PI)) + gameRes.getX() / 2),
+                (int) (gameRes.getY() * (-Math.cos(timestep * 2 * Math.PI)) + gameRes.getY() / 2),
+                gameRes.getX() / 2,
+                gameRes.getY() / 2
         );
 
-        g.drawString((starttime - (int) timestep) + " seconds", (int) gameRes.x / 2, (int) gameRes.y / 2);
+        g.drawString((starttime - (int) timestep) + " seconds", gameRes.getX() / 2, gameRes.getY() / 2);
         /*
-		g.drawLine((int)( gameRes.y/4*( Math.sin(timestep)+Math.cos(timestep)) +gameRes.x/2), 
-		           (int)( gameRes.y/4*( Math.sin(timestep)-Math.cos(timestep)) +gameRes.y/2), 
-		           (int)( gameRes.y/4*(-Math.sin(timestep)+Math.cos(timestep)) +gameRes.x/2), 
-		           (int)( gameRes.y/4*(+Math.sin(timestep)+Math.cos(timestep)) +gameRes.y/2)
+		g.drawLine((int)( gameRes.getY()/4*( Math.sin(timestep)+Math.cos(timestep)) +gameRes.getX()/2), 
+		           (int)( gameRes.getY()/4*( Math.sin(timestep)-Math.cos(timestep)) +gameRes.getY()/2), 
+		           (int)( gameRes.getY()/4*(-Math.sin(timestep)+Math.cos(timestep)) +gameRes.getX()/2), 
+		           (int)( gameRes.getY()/4*(+Math.sin(timestep)+Math.cos(timestep)) +gameRes.getY()/2)
 					);*/
 
     }
