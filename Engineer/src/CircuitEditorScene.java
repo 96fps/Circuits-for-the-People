@@ -2,21 +2,23 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class CircuitEditorScene extends Scene {
-    double timestep = 0;
-    Pos2D dim;
-    MetalGrid circ;
-    SiliconGrid silly;
+    private double timestep = 0;
+    private Pos2D dim;
+    private MetalGrid circ;
+    private SiliconGrid silly;
 
-    boolean[][][] metalpower;
-    boolean[][][] sillypower;
-    boolean stable_state;
+    private boolean[][][] metalpower;
+    private boolean[][][] sillypower;
+    private boolean stable_state;
 
-    boolean colorMetal = true;
+    private boolean colorMetal = true;
 
-    Pos3D[][] colors;
+    private Pos3D[][] colors;
 
-    double timelast = 0;
+    private double timelast = 0;
     int t_clone = 0;
+
+
 
     public CircuitEditorScene(Pos2D board_dim) {
         dim = board_dim;

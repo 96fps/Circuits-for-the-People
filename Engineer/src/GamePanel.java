@@ -12,25 +12,25 @@ import javax.swing.*;
 import java.awt.event.KeyListener;
 
 public class GamePanel extends JPanel implements MouseListener, KeyListener, ActionListener {
-    static public boolean running = true;
+    private static boolean running = true;
 
-    static public boolean controls;
-    int wait = 1000 / 60;
-    double itter = (double) wait / 1000;
-    Timer clock = new Timer(wait, this);
-    double time = 0;
-    ControlSet c = new ControlSet();
-    int sceneID = 0;
+    private static boolean controls;
+    private int wait = 1000 / 60;
+    private double itter = (double) wait / 1000;
+    private Timer clock = new Timer(wait, this);
+    private double time = 0;
+    private ControlSet c = new ControlSet();
+    private int sceneID = 0;
 
-    int tile_size = 16;
+    private int tile_size = 16;
 
-    Pos2D board_dim = new Pos2D(44, 27);
+    private Pos2D board_dim = new Pos2D(44, 27);
 
-    Pos2D gameRes = new Pos2D((board_dim.x + 1) * tile_size, (board_dim.y + 1) * tile_size);
+    private Pos2D gameRes = new Pos2D((board_dim.x + 1) * tile_size, (board_dim.y + 1) * tile_size);
 
-    IntroScene intro = new IntroScene();
-    MenuScene menu = new MenuScene();
-    CircuitEditorScene editor = new CircuitEditorScene(board_dim);
+    private IntroScene intro = new IntroScene();
+    private MenuScene menu = new MenuScene();
+    private CircuitEditorScene editor = new CircuitEditorScene(board_dim);
 
     @Override
     public void actionPerformed(ActionEvent e) {//new game "tick"

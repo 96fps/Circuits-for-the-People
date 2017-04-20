@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 
 public class ControlSet {
-    ArrayList<Boolean> buttons = new ArrayList<Boolean>();
-    ArrayList<Double> doubles = new ArrayList<Double>();
-    ArrayList<Integer> ints = new ArrayList<Integer>();
+    private ArrayList<Boolean> buttons = new ArrayList<Boolean>();
+    private ArrayList<Double> doubles = new ArrayList<Double>();
+    private ArrayList<Integer> ints = new ArrayList<Integer>();
 
     public ControlSet() {
 

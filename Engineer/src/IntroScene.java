@@ -3,8 +3,8 @@ import java.awt.Graphics;
 
 
 public class IntroScene extends Scene {
-    double timestep = 0;
-    double blitz = 0;
+    private double timestep = 0;
+    private double blitz = 0;
     boolean skip = true;
     int starttime = 3;//10
 

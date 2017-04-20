@@ -1,7 +1,7 @@
 
 public class SiliconGrid {
 
-    Pos2D board_dim; //44 x 27
+    private Pos2D board_dim; //44 x 27
 
     public enum siliconType {red, yellow}
 

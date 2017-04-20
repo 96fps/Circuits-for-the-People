@@ -3,7 +3,7 @@ import java.awt.Graphics;
 
 
 public class MenuScene extends Scene {
-    double timestep = 0;
+    private double timestep = 0;
 
     public MenuScene() {
         //build
